@@ -1,0 +1,89 @@
+## Client Requirement
+
+we need an attendance system. Students can create their own profile. Admin can see list of students and  their attendances. Admin can enable and disable attend button also this button can be disabled based on a timer . Each time admin  enable attend button , students can participate for only once each day. student will have timesheet of attendance.
+
+student can see their own time logs and attend button when enable.
+
+## Functional Requirements.
+
+### Admin
+
+- admin can see list of students.
+- admin can create, delete students.
+- admin can change student id states.
+- admin can change student profile.
+- admin can enable or disable attendance button.
+- admin can see student attendance sheet.
+
+### Student
+
+- register with their credential.
+- registration  will be three stats [pending, activate and rejected]
+- pending or rejected students won’t be able to see anything.
+- activated students can update their profile and they can see their dashboard.
+    - first name .
+    - last name.
+    - email.
+    - profile picture.
+- student can change their password.
+- students can see attend button when admin enable this.
+- students can participate for only once time each day.
+- student can log out
+
+# Requirement analysis
+
+## modal
+
+ 
+
+### User
+
+- Name.
+- Email.
+- Password.
+- Account status
+- rank
+- Roll
+
+### profile
+
+- user id
+- phone number.
+- profile pic.
+
+### attendance Sheet
+
+- created date and time.
+- user id
+
+### Admin Attendance
+
+- created date and time.
+- status.
+- time limit
+
+# Endpoints
+
+## Admin Endpoints
+
+- GET/students[private]
+- GET/students/student id [private]
+- POST/admin/registration [ private]
+- DELETE/students/student id [private]
+- PATCH/students/student id [private]
+    - change account status
+    - update or change user information
+- POST/admin/attendance [private]
+- GET/admin/attendance/attendance id [private]
+- GET/time sheet/student id [private]
+- GET/time sheet [ private]
+
+## Student Endpoints
+
+- POST/student/registration[public]
+- GET/students/auth [public]
+- GET/profile[private]
+- PATCH/profile[private]
+- PATCH/students [private]
+- PATCH/students/auth/change password [private]
+- GET/time sheet [private]

@@ -1,16 +1,30 @@
+const { getuser,deleteUser, getProfile, updateProfile, updateUserInfo } = require('../controller/user.controller')
+
 const router = require('express').Router()
-const {registration, deleteAll, findUser, login}  = require('../controller/user.controller')
 
-// create user
-router.post('/registration',registration)
 
-// login user
-router.post('/login',login)
+// get individual user
+router.get('/' ,getuser)
 
-// find all user
-router.get('/',findUser)
+// update user information
+router.patch('/',updateUserInfo)
 
-// delete all user
-router.delete('/deleteAll',deleteAll)
+// delete user
+/**
+ * private route
+ * if admin request delete user
+ * TODO if user request checK user email and deleted account email. if matches delete user
+ */
+router.delete('/',deleteUser)
+
+// get profile
+router.get('/profile',getProfile)
+
+// update user
+router.patch('/profile',updateProfile)
+
+
+
+
 
 module.exports = router

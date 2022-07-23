@@ -1,13 +1,17 @@
-const { createAttendance, changeStatus } = require('../controller/attendanceSheet.controller')
+const { createAttendance, changeStatus, runningSheet } = require('../controller/attendanceSheet.controller')
+const { adminAuth } = require('../middleware/auth.middleware')
 
 const router = require('express').Router()
 
 
 // create attendace 
-router.post('/', createAttendance)
+router.post('/',adminAuth, createAttendance)
+
+//find running attendance sheet
+router.get('/running',runningSheet)
 
 // update attendance status
-router.get('/completed',changeStatus)
+router.get('/completed',adminAuth,changeStatus)
 
 
 

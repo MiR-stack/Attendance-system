@@ -42,9 +42,14 @@ async function attendanceSheetUsers(req,res){
     if (!id)
     return res.status(406).json({ msg: "invalid attendace sheet id" });
 
-    const users = await findUsers(id)
+    const user = req.body.user
 
-    res.status(200).send(users)
+    if( user && user.rank.includes('admin')){
+      const users = await findUsers(id)
+
+     return res.status(200).send(users)
+    }
+    res.status(401).send('unauthorized')
 }
 
 module.exports = { perticipateAttendance, userAttendances,attendanceSheetUsers };

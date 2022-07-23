@@ -21,7 +21,7 @@ app.use(
 app.use("/api/v1/admin", auth, adminAuth, adminRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", auth, userRouter);
-app.use("/api/v1/attendanceSheet", auth,adminAuth, attendanceSheetRouter);
+app.use("/api/v1/attendanceSheet", auth, attendanceSheetRouter);
 app.use('/api/v1/attendance',auth,attendanceRouter)
 
 app.get("/health", (_req, res) => {

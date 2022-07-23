@@ -1,11 +1,18 @@
-const { registration } = require("../controller/auth.controller");
-const { auth, adminAuth } = require("../middleware/auth.middleware");
+const {
+  registration,
+  findUser,
+  deleteAll,
+} = require("../controller/auth.controller");
 
 const router = require("express").Router();
 
 // create user by admin
 router.post("/registration", registration);
 
-// get all users
+// find all user
+router.get("/users", findUser);
+
+// delete all user
+router.delete("/users/deleteAll", deleteAll);
 
 module.exports = router;

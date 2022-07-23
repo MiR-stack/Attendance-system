@@ -27,8 +27,9 @@ function createNewUser(name, email, password, roll) {
 // create new user by admin
 function createUserByAdmin(data) {
   let user = new User(data);
-  user = user.save();
-  return user;
+  user.accountStatus = 'active'
+  return user.save();
+
 }
 
 // update user information

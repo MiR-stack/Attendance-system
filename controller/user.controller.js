@@ -1,3 +1,4 @@
+const { deleteUserAttendances } = require("../services/attendance.service");
 const {
   findProfileByUserId,
   updateProfileByUserId,
@@ -44,7 +45,8 @@ async function deleteUser(req, res) {
   let user = await findUserByKey("_id", id);
 
   if (!user) return res.status(404).json({ msg: "user not found" });
-
+ 
+  await deleteUserAttendances(user._id)
   await deleteProfileByUserId(user._id);
   user = await deleteUserByKey("_id", id);
 

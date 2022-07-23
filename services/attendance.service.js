@@ -6,7 +6,7 @@ async function createAttendanceService(userId) {
   const attendanceSheet = await findAttendanceService();
   if (!attendanceSheet) throw error("not running any attedance sheet", 404);
 
-  let attendace = await Attendance.findOne({ userID: userId });
+  let attendace = await Attendance.findOne({ userID: userId,attendanceSheetID:attendanceSheet._id });
 
   if (attendace) throw error("already attended");
 
@@ -28,4 +28,8 @@ function findUsers(attendanceSheetID) {
   return Attendance.find({ attendanceSheetID });
 }
 
-module.exports = { createAttendanceService, userAttendancesService, findUsers };
+function deleteUserAttendances(userId){
+  return Attendance.deleteMany({userID:userId})
+}
+
+module.exports = { createAttendanceService, userAttendancesService, findUsers,deleteUserAttendances };

@@ -13,13 +13,13 @@ async function createAttendance(req, res) {
 
   if (!attendace) return res.status(500).json({ msg: "something went wrong" });
 
-  // change status after timelimit automitacally
-  setTimeout(() => {
-    attendace.status = "complete";
-    attendace.save();
-  }, 1000 * 60 * attendace.timeLimit);
-
   res.status(201).send(attendace);
+}
+
+// find running attedance sheet
+async function runningSheet(_req,res){
+  const running = await findAttendanceService()
+  res.status(200).send(running) 
 }
 
 // change attandance status
@@ -32,4 +32,4 @@ async function changeStatus(_req, res) {
   res.send("attandance completed");
 }
 
-module.exports = { createAttendance ,changeStatus};
+module.exports = { createAttendance ,changeStatus ,runningSheet};
